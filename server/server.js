@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config({ path: 'server/.env' });
 import db from './db.js';
 import express from 'express';
+import path from 'path';
 
 // Routes
 import blogPostRoutes from './routes/blogPostRoutes.js';
@@ -19,6 +20,9 @@ app.use(
   })
 );
 
+app.use('/api/blog-posts', blogPostRoutes);
+app.use('/api/users', userRoutes);
+
 app.get('/api/config/emailjs', (req, res) =>
   res.send({
     template_id: process.env.TEMPLATE_ID,
@@ -27,8 +31,14 @@ app.get('/api/config/emailjs', (req, res) =>
   })
 );
 
-app.use('/api/blog-posts', blogPostRoutes);
-app.use('/api/users', userRoutes);
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/build')));
+
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+}
 
 const port = process.env.PORT || 5000;
 
