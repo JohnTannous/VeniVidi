@@ -46,7 +46,7 @@ const NavLink = ({ path, children }) => (
     px='2'
     py='2'
     fontWeight='semibold'
-    _hover={{ textDecoration: 'none', bg: mode('blue.100', 'blue.800') }}
+    _hover={{ textDecoration: 'none', bg: mode('whiteAlpha.200', 'blackAlpha.800') }}
   >
     {children}
   </Link>
@@ -58,10 +58,10 @@ const Navbar = () => {
   const [logoHover, setLogoHover] = useState(false);
 
   return (
-    <Box bg={mode('blue.200', 'blue.900')} px={4}>
+    <Box bg={mode('whiteAlpha.200', 'dark')} px={4} borderBottom='1px' >
       <Flex h='16' alignItems='center' justifyContent='space-between'>
         <IconButton
-          bg={mode('blue.200', 'blue.900')}
+          bg={mode('whiteAlpha.200', 'blackAlpha.900')}
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
           display={{ md: 'none' }}
           onClick={isOpen ? onClose : onOpen}
@@ -76,8 +76,8 @@ const Navbar = () => {
             onMouseLeave={() => setLogoHover(false)}
           >
             <Flex alignItems='center'>
-              <Icon as={Gi3DGlasses} h='10' w='10' color={logoHover ? 'gray.200' : mode('gray.600', 'gray.400')} />
-              <Text fontWeight='extrabold' color={mode('gray.600', 'gray.400')}>
+              <Icon as={Gi3DGlasses} h='10' w='10' color={logoHover ? 'gray.300' : mode('blackAlpha.900', 'whiteAlpha.900')} />
+              <Text fontWeight='extrabold' color={mode('blackAlpha.900', 'whiteAlpha.900')}>
                 Veni Vidi
               </Text>
             </Flex>
@@ -89,7 +89,7 @@ const Navbar = () => {
               </NavLink>
             ))}
             <Menu>
-              <MenuButton fontWeight='semibold' p='2' _hover={{ bg: mode('blue.100', 'blue.800') }}>
+              <MenuButton fontWeight='semibold' p='2' _hover={{ bg: mode('blackAlpha.900', 'blackAlpha.700') }}>
                 Blog
               </MenuButton>
               <MenuList>
@@ -134,7 +134,7 @@ const Navbar = () => {
               mt='3'
               fontWeight='semibold'
               p='2'
-              _hover={{ bg: mode('blue.100', 'blue.800') }}
+              _hover={{ bg: mode('grey.100', 'grey.800') }}
             >
               Blog
             </MenuButton>
