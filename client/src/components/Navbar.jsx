@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { Gi3DGlasses, GiWorld } from 'react-icons/gi';
+import { Gi3DGlasses } from 'react-icons/gi';
 import { FaTwitter, FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -57,8 +57,11 @@ const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const [logoHover, setLogoHover] = useState(false);
 
+  const user = useSelector((state) => state.user);
+  const { userInfo } = user;
+
   return (
-    <Box bg={mode('whiteAlpha.200', 'dark')} px={4} borderBottom='1px' >
+    <Box bg={mode('whiteAlpha.200', 'dark')} px={4} borderBottom='1px'>
       <Flex h='16' alignItems='center' justifyContent='space-between'>
         <IconButton
           bg={mode('whiteAlpha.200', 'blackAlpha.900')}
@@ -76,7 +79,12 @@ const Navbar = () => {
             onMouseLeave={() => setLogoHover(false)}
           >
             <Flex alignItems='center'>
-              <Icon as={Gi3DGlasses} h='10' w='10' color={logoHover ? 'gray.300' : mode('blackAlpha.900', 'whiteAlpha.900')} />
+              <Icon
+                as={Gi3DGlasses}
+                h='10'
+                w='10'
+                color={logoHover ? 'gray.300' : mode('blackAlpha.900', 'whiteAlpha.900')}
+              />
               <Text fontWeight='extrabold' color={mode('blackAlpha.900', 'whiteAlpha.900')}>
                 Veni Vidi
               </Text>
@@ -89,7 +97,7 @@ const Navbar = () => {
               </NavLink>
             ))}
             <Menu>
-              <MenuButton fontWeight='semibold' p='2' _hover={{ bg: mode('blackAlpha.900', 'blackAlpha.700') }}>
+              <MenuButton fontWeight='semibold' p='2' _hover={{ bg: mode('grey.300', 'blackAlpha.700') }}>
                 Blog
               </MenuButton>
               <MenuList>
@@ -100,6 +108,11 @@ const Navbar = () => {
                 ))}
               </MenuList>
             </Menu>
+            {userInfo && (
+              <Link as={ReactLink} to='/admin-console'>
+                <MdAdminPanelSettings size='30' />
+              </Link>
+            )}
           </HStack>
         </HStack>
         <HStack>
@@ -146,6 +159,11 @@ const Navbar = () => {
               ))}
             </MenuList>
           </Menu>
+          {userInfo && (
+            <Link as={ReactLink} to='/admin-console'>
+              <MdAdminPanelSettings size='30' />
+            </Link>
+          )}
           <ButtonGroup spacing='0' variant='ghost' mr='3' mt='5'>
             <IconButton as='a' href='#' icon={<FaFacebook fontSize='1.25rem' />} />
             <IconButton as='a' href='#' icon={<FaTwitter fontSize='1.25rem' />} />

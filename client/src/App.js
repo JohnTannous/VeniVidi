@@ -4,6 +4,9 @@ import Navbar from './components/Navbar';
 import BlogScreen from './screens/BlogScreen';
 import SingleBlogScreen from './screens/SingleBlogScreen';
 import ContactScreen from './screens/ContactScreen';
+import LoginScreen from './screens/LoginScreen';
+import AdminScreen from './screens/AdminScreen';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -11,15 +14,18 @@ const App = () => {
       <Router>
         <Navbar />
         <main>
-        <Routes>
+          <Routes>
             <Route path='/blog/:category' element={<BlogScreen />}></Route>
             <Route path='/:id' element={<SingleBlogScreen />}></Route>
             <Route path='/contact' element={<ContactScreen />}></Route>
+            <Route path='/login' element={<LoginScreen />}></Route>
+            <Route path='/admin-console' element={<AdminScreen />}></Route>
           </Routes>
         </main>
-        </Router>
+        <Footer />
+      </Router>
     </ChakraProvider>
   );
-}
+};
 
 export default App;
