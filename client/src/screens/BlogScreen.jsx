@@ -36,7 +36,7 @@ const BlogScreen = () => {
 
   return (
     <VStack spacing='30px' minHeight='100vh'>
-      <Heading fontSize='5xl' mb='16'>
+      <Heading fontSize='5xl' mb='16' >
         {pageTitle}
       </Heading>
       {loading ? (

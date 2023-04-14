@@ -83,7 +83,7 @@ const Navbar = () => {
                 as={Gi3DGlasses}
                 h='10'
                 w='10'
-                color={logoHover ? 'gray.300' : mode('blackAlpha.900', 'whiteAlpha.900')}
+                color={logoHover ? 'gray.300' : mode('red.500', 'red.500')}
               />
               <Text fontWeight='extrabold' color={mode('blackAlpha.900', 'whiteAlpha.900')}>
                 Veni Vidi
