@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import BlogScreen from './screens/BlogScreen';
 import SingleBlogScreen from './screens/SingleBlogScreen';
+import ContactScreen from './screens/ContactScreen';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
             <Route path='/blog/:category' element={<BlogScreen />}></Route>
             <Route path='/:id' element={<SingleBlogScreen />}></Route>
+            <Route path='/contact' element={<ContactScreen />}></Route>
           </Routes>
         </main>
         </Router>
